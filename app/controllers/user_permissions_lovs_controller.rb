@@ -1,0 +1,2 @@
+class UserPermissionsLovsController < ApplicationController
+end
