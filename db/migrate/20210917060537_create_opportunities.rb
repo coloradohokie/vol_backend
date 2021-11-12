@@ -8,9 +8,9 @@ class CreateOpportunities < ActiveRecord::Migration[6.0]
       t.date :event_end
       t.time :shift_start
       t.time :shift_end
-      t.references :roles, null: false, foreign_key: true
+      t.belongs_to :role, null: false, foreign_key: true
       t.float :credit_hours
-      t.references :request_statuses, null: false, foreign_key: true
+      t.belongs_to :request_status, null: false, foreign_key: true
       t.boolean :visibile
       t.text :comments
 

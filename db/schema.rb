@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 2021_09_17_060537) do
     t.date "event_end"
     t.time "shift_start"
     t.time "shift_end"
-    t.integer "roles_id", null: false
+    t.integer "role_id", null: false
     t.float "credit_hours"
-    t.integer "request_statuses_id", null: false
+    t.integer "request_status_id", null: false
     t.boolean "visibile"
     t.text "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["request_statuses_id"], name: "index_opportunities_on_request_statuses_id"
-    t.index ["roles_id"], name: "index_opportunities_on_roles_id"
+    t.index ["request_status_id"], name: "index_opportunities_on_request_status_id"
+    t.index ["role_id"], name: "index_opportunities_on_role_id"
   end
 
   create_table "request_statuses", force: :cascade do |t|
@@ -51,6 +51,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_060537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "opportunities", "request_statuses", column: "request_statuses_id"
-  add_foreign_key "opportunities", "roles", column: "roles_id"
+  add_foreign_key "opportunities", "request_statuses"
+  add_foreign_key "opportunities", "roles"
 end
