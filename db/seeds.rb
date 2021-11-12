@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Assignment.destroy_all
 Opportunity.destroy_all
 RequestStatus.destroy_all
 UserPermissionsLov.destroy_all
@@ -36,21 +35,14 @@ statuses = RequestStatus.create([
     {state: 'Missed'}
 ])
 
-opportunities = Opportunity.create([
-    {event_id: 222222, event_title: 'Tuesday Event', event_date: '2021-11-01', shift_start: '18:00', shift_end: '22:00', roles_id: roles[0].id, credit_hours: 4, visibility: true},
-    {event_id: 222222, event_title: 'Tuesday Event', event_date: '2021-11-01',shift_start: '18:00', shift_end: '20:00', roles_id: roles[1].id, credit_hours: 2.5, visibility: true },
-    {event_id: 333333, event_title: 'Open Lab Thursday', event_date: '2021-12-01', shift_start: '18:00', shift_end: '22:00', roles_id: roles[0].id, credit_hours: 4, visibility: true },
-    {event_id: 333333, event_title: 'Open Lab Thursday', event_date: '2021-12-01',shift_start: '18:00', shift_end: '20:00', roles_id: roles[1].id, credit_hours: 2.5, visibility: true },
-    {event_id: 333333, event_title: 'Open Lab Thursday', event_date: '2021-12-01',shift_start: '20:00', shift_end: '22:00', roles_id: roles[1].id, credit_hours: 2.5, visibility: true },
-    {event_title: 'Studio Cleaning', event_date: '2021-12-03', roles_id: roles[3].id, credit_hours: 4, visibility: true }
-])
 
-Assignment.create(contact_id: 123456, opportunities_id: opportunities.first.id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
-Assignment.create(contact_id: 789789, opportunities_id: opportunities[1].id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
-Assignment.create(contact_id: 123456, opportunities_id: opportunities[2].id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
-Assignment.create(contact_id: 789789, opportunities_id: opportunities[3].id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
-Assignment.create(contact_id: 123456, opportunities_id: opportunities[4].id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
-Assignment.create(contact_id: 789789, opportunities_id: opportunities[5].id, request_statuses_id: statuses[4].id, comments: 'this is a comment.')
+    Opportunity.create({contact_id: 123456, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.parse('2021-11-01 18:00'), event_end: DateTime.parse('2021-11-01 22:00'), shift_start: '18:00', shift_end: '22:00', roles_id: roles[0].id, credit_hours: 4, request_statuses_id: statuses[4].id, visibile: true})
+    Opportunity.create({contact_id: 789789, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.parse('2021-11-01 18:00'), event_end: DateTime.parse('2021-11-01 22:00'), shift_start: '18:00', shift_end: '20:00', roles_id: roles[1].id, credit_hours: 2.5, request_statuses_id: statuses[4].id, visibile: true })
+    Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'), shift_start: '18:00', shift_end: '22:00', roles_id: roles[0].id, credit_hours: 4, request_statuses_id: statuses[2].id, visibile: true })
+    Opportunity.create({contact_id: 789789, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'),shift_start: '18:00', shift_end: '20:00', roles_id: roles[1].id, credit_hours: 2.5, request_statuses_id: statuses[2].id, visibile: true })
+    Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'),shift_start: '20:00', shift_end: '22:00', roles_id: roles[1].id, credit_hours: 2.5, request_statuses_id: statuses[2].id, visibile: true })
+    Opportunity.create({contact_id: 789789, event_title: 'Studio Cleaning', event_start: DateTime.parse('2021-12-03 00:00'), event_end: DateTime.parse('2021-12-03 00:00'), roles_id: roles[3].id, credit_hours: 4, request_statuses_id: statuses[1].id, visibile: true })
+
 
 
 

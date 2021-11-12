@@ -1,3 +1,4 @@
 class Opportunity < ApplicationRecord
-    has_many :roles
+    has_one :role
+    has_one :request_status
 end

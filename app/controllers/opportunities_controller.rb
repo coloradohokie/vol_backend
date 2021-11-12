@@ -2,7 +2,7 @@ class OpportunitiesController < ApplicationController
     def index
         @opportunities = Opportunity.all
 
-        render json: @opportunities, status: 200
+        render json: @opportunities, include: [:role], status: 200
     end
 
     def show

@@ -10,30 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_060553) do
+ActiveRecord::Schema.define(version: 2021_09_17_060537) do
 
-  create_table "assignments", force: :cascade do |t|
+  create_table "opportunities", force: :cascade do |t|
     t.integer "contact_id"
-    t.integer "opportunities_id"
-    t.integer "request_statuses_id"
+    t.integer "event_id"
+    t.string "event_title"
+    t.date "event_start"
+    t.date "event_end"
+    t.time "shift_start"
+    t.time "shift_end"
+    t.integer "roles_id", null: false
+    t.float "credit_hours"
+    t.integer "request_statuses_id", null: false
+    t.boolean "visibile"
     t.text "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["opportunities_id"], name: "index_assignments_on_opportunities_id"
-    t.index ["request_statuses_id"], name: "index_assignments_on_request_statuses_id"
-  end
-
-  create_table "opportunities", force: :cascade do |t|
-    t.integer "event_id"
-    t.string "event_title"
-    t.date "event_date"
-    t.time "shift_start"
-    t.time "shift_end"
-    t.integer "roles_id"
-    t.float "credit_hours"
-    t.boolean "visibility"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_statuses_id"], name: "index_opportunities_on_request_statuses_id"
     t.index ["roles_id"], name: "index_opportunities_on_roles_id"
   end
 
@@ -57,4 +51,6 @@ ActiveRecord::Schema.define(version: 2021_09_17_060553) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "opportunities", "request_statuses", column: "request_statuses_id"
+  add_foreign_key "opportunities", "roles", column: "roles_id"
 end
