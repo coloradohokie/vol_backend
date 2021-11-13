@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2021_09_17_060537) do
     t.integer "contact_id"
     t.integer "event_id"
     t.string "event_title"
-    t.date "event_start"
-    t.date "event_end"
-    t.time "shift_start"
-    t.time "shift_end"
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.datetime "shift_start"
+    t.datetime "shift_end"
     t.integer "role_id", null: false
     t.float "credit_hours"
     t.integer "request_status_id", null: false

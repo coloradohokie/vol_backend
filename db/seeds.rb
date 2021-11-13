@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'date'
 
 Opportunity.destroy_all
 RequestStatus.destroy_all
@@ -36,12 +37,18 @@ statuses = RequestStatus.create([
 ])
 
 
-Opportunity.create({contact_id: 123456, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.parse('2021-11-01 18:00'), event_end: DateTime.parse('2021-11-01 22:00'), shift_start: '18:00', shift_end: '22:00', role: roles[0], credit_hours: 4, request_status: statuses[4], visibile: true})
-Opportunity.create({contact_id: 789789, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.parse('2021-11-01 18:00'), event_end: DateTime.parse('2021-11-01 22:00'), shift_start: '18:00', shift_end: '20:00', role: roles[1], credit_hours: 2.5, request_status: statuses[4], visibile: true })
-Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'), shift_start: '18:00', shift_end: '22:00', role: roles[0], credit_hours: 4, request_status: statuses[2], visibile: true })
-Opportunity.create({contact_id: 789789, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'),shift_start: '18:00', shift_end: '20:00', role: roles[1], credit_hours: 2.5, request_status: statuses[2], visibile: true })
-Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.parse('2021-12-01 18:00'), event_end: DateTime.parse('2021-12-01 22:00'),shift_start: '20:00', shift_end: '22:00', role: roles[1], credit_hours: 2.5, request_status: statuses[2], visibile: true })
-Opportunity.create({contact_id: 789789, event_title: 'Studio Cleaning', event_start: DateTime.parse('2021-12-03 00:00'), event_end: DateTime.parse('2021-12-03 00:00'), role: roles[3], credit_hours: 4, request_status: statuses[1], visibile: true })
+Opportunity.create({contact_id: 123456, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.new(2021,11,01,18,00), event_end: DateTime.new(2021,11,01,22,00), shift_start: DateTime.new(2021,11,01,18,00), shift_end: DateTime.new(2021,11,01,20,00), role: roles[0], credit_hours: 4, request_status: statuses[4], visibile: true})
+Opportunity.create({contact_id: 789789, event_id: 222222, event_title: 'Tuesday Event', event_start: DateTime.new(2021,11,01,18,00), event_end: DateTime.new(2021,11,01,22,00), shift_start: DateTime.new(2021,11,01,20,00), shift_end: DateTime.new(2021,11,01,22,00), role: roles[1], credit_hours: 2.5, request_status: statuses[4], visibile: true })
+Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,01,18,00), event_end: DateTime.new(2021,12,01,22,00), shift_start: DateTime.new(2021,12,01,18,00), shift_end: DateTime.new(2021,12,01,22,00), role: roles[0], credit_hours: 4, request_status: statuses[2], visibile: true })
+Opportunity.create({contact_id: 789789, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,01,18,00), event_end: DateTime.new(2021,12,01,22,00), shift_start: DateTime.new(2021,12,01,18,00), shift_end: DateTime.new(2021,12,01,20,00), role: roles[1], request_status: statuses[2], visibile: true })
+Opportunity.create({contact_id: 123456, event_id: 333333, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,01,18,00), event_end: DateTime.new(2021,12,01,22,00), shift_start: DateTime.new(2021,12,01,20,00), shift_end: DateTime.new(2021,12,01,22,00), role: roles[1], request_status: statuses[2], visibile: true })
+Opportunity.create({contact_id: 789789, event_title: 'Studio Cleaning', event_start: DateTime.new(2021,12,03,00,00), event_end: DateTime.new(2021,12,03,00,00), role: roles[3], credit_hours: 4, request_status: statuses[1], visibile: true })
+Opportunity.create({event_id: 454545, event_title: 'Tuesday Event', event_start: DateTime.new(2021,12,8,18,00), event_end: DateTime.new(2021,12,8,22,00), shift_start: DateTime.new(2021,12,8,18,00), shift_end: DateTime.new(2021,12,8,20,00), role: roles[0], credit_hours: 4, request_status: statuses[0], visibile: true})
+Opportunity.create({event_id: 454545, event_title: 'Tuesday Event', event_start: DateTime.new(2021,12,8,18,00), event_end: DateTime.new(2021,12,8,22,00), shift_start: DateTime.new(2021,12,8,20,00), shift_end: DateTime.new(2021,12,8,22,00), role: roles[1], credit_hours: 2.5, request_status: statuses[0], visibile: true })
+Opportunity.create({event_id: 471288, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,10,18,00), event_end: DateTime.new(2021,12,10,22,00), shift_start: DateTime.new(2021,12,10,18,00), shift_end: DateTime.new(2021,12,10,22,00), role: roles[0], credit_hours: 4, request_status: statuses[0], visibile: true })
+Opportunity.create({event_id: 471288, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,10,18,00), event_end: DateTime.new(2021,12,10,22,00), shift_start: DateTime.new(2021,12,10,18,00), shift_end: DateTime.new(2021,12,10,20,00), role: roles[1], request_status: statuses[0], visibile: true })
+Opportunity.create({event_id: 471288, event_title: 'Open Lab Thursday', event_start: DateTime.new(2021,12,10,18,00), event_end: DateTime.new(2021,12,10,22,00), shift_start: DateTime.new(2021,12,10,20,00), shift_end: DateTime.new(2021,12,10,22,00), role: roles[1], request_status: statuses[0], visibile: true })
+Opportunity.create({event_title: 'Studio Cleaning', event_start: DateTime.new(2021,01,03,00,00), event_end: DateTime.new(2021,01,03,00,00), role: roles[3], credit_hours: 4, request_status: statuses[0], visibile: true })
 
 
 
